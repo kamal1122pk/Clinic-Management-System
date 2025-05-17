@@ -1,20 +1,36 @@
 package com.clinicms.model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
+import java.time.LocalDateTime;
 
 public class Appointment {
-    static int idCounter = 0;
     int id;
-    int patientaId, doctorId;
-    String date;
-    String time;
-    public Appointment(int patientaId, int doctorId)
+    int patientId, doctorId;
+    LocalDateTime dateTime;
+    public Appointment(int patientId, int doctorId, LocalDateTime dateTime, int id)
     {
-        this.patientaId = patientaId;
+        this.patientId = patientId;
         this.doctorId = doctorId;
-        time = LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond();
-        date = LocalDate.now().getYear() + ":" + LocalDate.now().getMonth() + ":" +  LocalDate.now().getDayOfMonth();
+        this.dateTime = dateTime;
+        this.id = id;
+    }
+    public LocalDateTime getDateTime()
+    {
+        return dateTime;
+    }
+    public int getPatientId()
+    {
+        return patientId;
+    }
+    public int getDoctorId()
+    {
+        return doctorId;
+    }
+    @Override
+    public String toString()
+    {
+        return "Id: " + id + " Doctor Id: " + doctorId + " Patient Id: " + patientId + " Appointment Time: " + dateTime;
+    }
+    public int getId() {
+        return id;
     }
 }
